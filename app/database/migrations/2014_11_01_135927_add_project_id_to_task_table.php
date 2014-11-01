@@ -12,9 +12,11 @@ class AddProjectIdToTaskTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('task', function(Blueprint $table)
+		Schema::table('tasks', function(Blueprint $table)
 		{
-			
+			$table->integer('project_id')->unsigned();
+			$table->foreign('project_id')->references('id')	
+				->on('projects');
 		});
 	}
 
@@ -26,7 +28,7 @@ class AddProjectIdToTaskTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('task', function(Blueprint $table)
+		Schema::table('tasks', function(Blueprint $table)
 		{
 			
 		});

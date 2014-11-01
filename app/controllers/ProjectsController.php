@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 class ProjectsController extends \BaseController {
 
 	/**
@@ -41,7 +43,7 @@ class ProjectsController extends \BaseController {
 			Project::create(array(
 					'name' => Input::get('name'),
 					'description' => Input::get('description'),
-					'deadline' => Input::get('deadline')
+					'deadline' => Carbon::now()->addDays(Input::get('daystodeadline'))
 				));
 
 			return Redirect::route('projects.index')->with('success', Lang::get('tasks.created'));
