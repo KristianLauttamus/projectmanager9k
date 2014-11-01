@@ -14,7 +14,8 @@ class Task extends \Eloquent {
 	 */
 	public static $rules = array(
 			'name' => 'required',
-			'deadline' => 'date'				
+			'daystodeadline' => 'numeric',
+			'progress' => 'required|numeric'
 		);
 
 	

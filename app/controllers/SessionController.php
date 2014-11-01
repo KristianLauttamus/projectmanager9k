@@ -63,4 +63,17 @@ class SessionController extends \BaseController {
 			return Redirect::to('/login')->with('success', Lang::get('register.success'));
 		}
 	}
+
+	/**
+	 * Logout
+	 * GET /logout
+	 * 
+	 * @return Response
+	 */
+	public function logout()
+	{
+		Auth::logout();
+
+		return Redirect::to('/');
+	}
 }

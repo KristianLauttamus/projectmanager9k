@@ -13,6 +13,7 @@
 
 // Loginform
 Route::get('login', 'SessionController@getLogin'); 
+Route::get('logout', 'SessionController@logout'); 
 Route::post('login', array('as' => 'login.post', 'uses' => 'SessionController@login'));
 
 // Registerform
@@ -26,7 +27,8 @@ Route::group(array('before' => 'auth'), function()
     // Projects
     Route::resource('/projects', 'ProjectsController');
     // Tasks
-    Route::resource('/tasks', 'TasksController');
+    Route::get('/projects/{projectId}/create/task' , 'TasksController@create');
+    Route::post('/projects/{projectId}/create/task' , array('as' => 'tasks.store', 'uses' => 'TasksController@store'));
     // Usermanager
     Route::resource('/users', 'UserController', array('except' => array('create', 'store')));
 

@@ -1,5 +1,6 @@
 @extends('layouts.base')
 
 @section('content')
-	Terve
+	Tää homma ei menny niiku piti<br/>
+	<img src="{{ asset('img/representation.jpg') }}"/>
 @stop

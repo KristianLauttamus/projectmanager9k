@@ -19,9 +19,10 @@ class TasksController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($projectId)
 	{
-		return View::make('tasks.create');
+		$project = Project::findOrFail($projectId);
+		return View::make('tasks.create', array('project' => $project));
 	}
 
 	/**
@@ -40,7 +41,8 @@ class TasksController extends \BaseController {
 			Task::create(array(
 					'name' => Input::get('name'),
 					'description' => Input::get('description'),
-					'deadline' => Input::get('deadline')
+					'deadline' => Carbon::now()->addDays(Input::get('deadline')),
+					'progress' => Input::get('progress'),
 				));
 
 			return Redirect::route('tasks.index')->with('success', Lang::get('tasks.created'));
