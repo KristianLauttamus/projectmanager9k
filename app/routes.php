@@ -11,7 +11,24 @@
 |
 */
 
-Route::get('/', function()
+// Loginform
+Route::get('login', 'SessionController@getLogin'); 
+Route::post('login', array('as' => 'login.post', 'uses' => 'SessionController@login'));
+
+// Registerform
+Route::get('register', 'SessionController@getRegister');
+Route::post('register', array('as' => 'register.post', 'uses' => 'SessionController@register'));
+
+Route::group(array('before' => 'auth'), function()
 {
-	return View::make('hello');
+	// Dashboard
+    Route::get('/', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
+    // Projects
+    Route::resource('/projects', 'ProjectsController');
+    // Tasks
+    Route::resource('/tasks', 'TasksController');
+    // Usermanager
+    Route::resource('/users', 'UserController', array('except' => array('create', 'store')));
+
 });
+
