@@ -35,7 +35,7 @@ class SessionController extends \BaseController {
 		if(Auth::attempt(Input::except('_token'), Input::get('remember_me') == 1 ? true : false)){
 			return Redirect::route('dashboard');
 		} else {
-			return Redirect::back()->withInput()->withErrors();
+			return Redirect::back()->withInput()->withErrors(array('invalidcredentials'));
 		}
 	}
 

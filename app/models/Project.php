@@ -22,4 +22,8 @@ class Project extends \Eloquent {
 	public function tasks(){
 		$this->hasMany('Task');
 	}
+
+	public function assignedUsers(){
+		$this->hasMany('user');
+	}
 }
