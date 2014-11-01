@@ -16,7 +16,7 @@ class Project extends \Eloquent {
 	 */
 	public static $rules = array(
 			'name' => 'required',
-			'daystodeadline' => 'required|numeric'				
+			'deadline' => 'date'				
 		);
 
 	public function tasks(){

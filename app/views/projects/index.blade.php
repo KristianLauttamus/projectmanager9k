@@ -16,8 +16,6 @@
                             <th>@Lang('projects.description')</th>
                             <th>@Lang('projects.tasks')</th>
                             <th>@Lang('projects.assignedusers')</th>
-                            <th>@Lang('projects.created')</th>
-                            <th>@Lang('projects.deadline')</th>
                             <th>@Lang('projects.progressbar')</th>
                             <th style="width: 40px">@Lang('projects.progress')</th>
                         </tr>
@@ -27,10 +25,8 @@
                                 <td><a href="{{ URL::route('projects.show', $project->id) }}">{{ $project->name }}</a></td>
 
                                 <td>{{ $project->description }}</td>
-                                <td></td>
                                 <td>{{ $project->assignedUsers()->count() }}</td>
-                                <td>{{ $project->created_at }}</td>
-                                <td>{{ $project->deadline }}</td>
+                                <td></td>
                                 <td>
                                     <div class="progress xs">
                                         <div class="progress-bar progress-bar-danger" style="width: {{ $project->progress }}%"></div>
