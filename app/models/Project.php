@@ -2,7 +2,7 @@
 
 class Project extends \Eloquent {
 	
-
+	protected $table = "projects";
 	/**
 	 * The attributes fillable for mass assignment.
 	 *
@@ -20,10 +20,10 @@ class Project extends \Eloquent {
 		);
 
 	public function tasks(){
-		$this->hasMany('Task');
+		return $this->hasMany('Task');
 	}
 
 	public function assignedUsers(){
-		$this->hasMany('user');
+		return $this->belongsToMany('User', 'user_project');
 	}
 }

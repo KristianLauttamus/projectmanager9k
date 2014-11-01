@@ -48,7 +48,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'email' => 'email|required'
 		);
 
-	public function tasks(){
-		$this->hasMany('Task');
+	public function projects(){
+		$this->belongsToMany('Project');
 	}
 }

@@ -16,18 +16,9 @@ class CreateTaskProgressByUserTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('progress');
-			$table->timestamps();
-		});
-
-		Schema::table('user_task_progress', function(Blueprint $table)
-		{
-			$table->integer('user_id')->unsigned();
-			$table->foreign('user_id')->references('id')
-				->on('users');
-
 			$table->integer('task_id')->unsigned();
-			$table->foreign('task_id')->references('id')
-				->on('tasks');
+			$table->integer('user_id')->unsigned();
+			$table->timestamps();
 		});
 	}
 

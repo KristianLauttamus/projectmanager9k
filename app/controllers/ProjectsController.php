@@ -11,7 +11,7 @@ class ProjectsController extends \BaseController {
 	public function index()
 	{
 		$projects = Project::all();
-		return View::make('projects.index')->with('projects', compact($projects));
+		return View::make('projects.index', array('projects' => $projects));
 	}
 
 	/**
@@ -58,7 +58,7 @@ class ProjectsController extends \BaseController {
 	public function show($id)
 	{
 		$project = Project::findOrFail($id);
-		return View::make('projects.show', $project);
+		return View::make('projects.show', array('project' => $project));
 	}
 
 	/**
